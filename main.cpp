@@ -24,22 +24,24 @@ Song readSong(std::string &line)
     try{
         Song song(cols[0],cols[1],cols[2],stoi(cols[3]),stoi(cols[4]),
             stoi(cols[5]),cols[6],cols[7],stoi(cols[8]),cols[9], //9 is bool
-            stoi(cols[10]),cols[11],cols[12],cols[13],cols[14],
-            cols[15],cols[16],cols[17],cols[18],cols[19],
-            cols[20],cols[21],cols[22],cols[23],cols[24]);
+            stoi(cols[10]),cols[11],cols[12],stof(cols[13]),stof(cols[14]),
+            stoi(cols[15]),stof(cols[16]),stoi(cols[17]),stof(cols[18]),stof(cols[19]),
+            stof(cols[20]),stof(cols[21]),stof(cols[22]),stof(cols[23]),stoi(cols[24]));
+
+            return song;
     }
     catch(exception& exept){
         return;
     }
 
-    return song;
+    //return song;
 }
 
 
 void fileHandler(std::vector<Song> &songs)
 {
     // Set filePath to downloaded csv file (Change later??)
-    string filePath = "C:\\Users\\jackb\\Documents\\UniversityOfFlorida\\Spring2024\\COP3530\\Project3\\universal_top_spotify_songs.csv";
+    string filePath = "";
     fstream csvFile(filePath, std::ios_base::in);
 
     string line;
