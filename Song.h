@@ -68,6 +68,8 @@ private:
     Style song_style;
     
 public:
+    Song(){};
+
     Song(string spotify_id,
     string name,
     string artist,

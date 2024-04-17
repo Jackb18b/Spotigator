@@ -3,24 +3,37 @@
 #include <fstream>
 #include <istream>
 #include <sstream>
+#include <regex>
+#include <cstring>
 #include "Song.h"
 
 
 using namespace std;
 
-
-
-Song readSong(std::string &line)
+vector<string> splitStrings(const string &line)
 {
-    vector<string> cols;
-    stringstream ss(line);
-
-    while(ss.good())
+    std::regex reg("\\\"(.*?)\\\"");
+    std::sregex_iterator iter(line.begin(), line.end(), reg);
+    std::sregex_iterator end;
+    // // Vector to store the split strings
+    // std::vector<std::string> tokens{ iter, std::sregex_iterator() };
+    vector<string> tokens;
+    while (iter != end)
     {
-        string sub;
-        getline(ss, sub, ',');
-        cols.push_back(sub);
+        string hold = iter->str();
+        hold = hold.substr(1,hold.size()-2);
+        tokens.emplace_back(hold);
+
+        ++iter;
     }
+
+    return tokens;
+}
+
+Song readSong(const string &line)
+{
+    vector<string> cols = splitStrings(line);   
+
     try{
         Song song(cols[0],cols[1],cols[2],stoi(cols[3]),stoi(cols[4]),
             stoi(cols[5]),cols[6],cols[7],stoi(cols[8]),cols[9], //9 is bool
@@ -31,27 +44,32 @@ Song readSong(std::string &line)
             return song;
     }
     catch(exception& exept){
-        return;
+        Song song;
+        return song;
     }
 
-    //return song;
+    
 }
 
 
 void fileHandler(std::vector<Song> &songs)
 {
     // Set filePath to downloaded csv file (Change later??)
-    string filePath = "";
+    string filePath = "C:\\Users\\jackb\\Documents\\UniversityOfFlorida\\Spring2024\\COP3530\\Project3\\universal_top_spotify_songs.csv";
     fstream csvFile(filePath, std::ios_base::in);
 
     string line;
     getline(csvFile, line); // header line
+
+    int count = 0;
     
-    while(csvFile.good())
+    while(csvFile.good() && (count < 100))
     {
         getline(csvFile, line);
         songs.emplace_back(readSong(line));
+        count++;
     }
+    
 
 }
 
