@@ -10,7 +10,13 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 vector<string> splitStrings(const string &line)
+=======
+
+
+Song readSong(string &line)
+>>>>>>> 59e7e24f48616dce9e99db04735bb04463cafcf7
 {
     std::regex reg("\\\"(.*?)\\\"");
     std::sregex_iterator iter(line.begin(), line.end(), reg);
@@ -52,11 +58,16 @@ Song readSong(const string &line)
 }
 
 
-void fileHandler(std::vector<Song> &songs)
+void fileHandler(vector<Song> &songs)
 {
     // Set filePath to downloaded csv file (Change later??)
+<<<<<<< HEAD
     string filePath = "C:\\Users\\jackb\\Documents\\UniversityOfFlorida\\Spring2024\\COP3530\\Project3\\universal_top_spotify_songs.csv";
     fstream csvFile(filePath, std::ios_base::in);
+=======
+    string filePath = "";
+    fstream csvFile(filePath, ios_base::in);
+>>>>>>> 59e7e24f48616dce9e99db04735bb04463cafcf7
 
     string line;
     getline(csvFile, line); // header line
@@ -78,7 +89,7 @@ void fileHandler(std::vector<Song> &songs)
 
 int main()
 {
-    std::vector<Song> songs;
+    vector<Song> songs;
     fileHandler(songs);
     return 0;
 }
