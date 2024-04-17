@@ -47,7 +47,6 @@ struct Style
 
     }
 };
-//int size;
 
 class Song
 {
