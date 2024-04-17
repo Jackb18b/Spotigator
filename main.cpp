@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-Song readSong(std::string &line)
+Song readSong(string &line)
 {
     vector<string> cols;
     stringstream ss(line);
@@ -38,11 +38,11 @@ Song readSong(std::string &line)
 }
 
 
-void fileHandler(std::vector<Song> &songs)
+void fileHandler(vector<Song> &songs)
 {
     // Set filePath to downloaded csv file (Change later??)
     string filePath = "";
-    fstream csvFile(filePath, std::ios_base::in);
+    fstream csvFile(filePath, ios_base::in);
 
     string line;
     getline(csvFile, line); // header line
@@ -60,7 +60,7 @@ void fileHandler(std::vector<Song> &songs)
 
 int main()
 {
-    std::vector<Song> songs;
+    vector<Song> songs;
     fileHandler(songs);
     return 0;
 }
