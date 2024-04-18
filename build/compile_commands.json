@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=c++11 -o CMakeFiles\\Spotigator.dir\\src\\Song.cpp.obj -c C:\\Users\\jackb\\OneDrive\\Documents\\GitHub\\Spotigator\\src\\Song.cpp",
+  "file": "C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/src/Song.cpp",
+  "output": "CMakeFiles/Spotigator.dir/src/Song.cpp.obj"
+},
+{
+  "directory": "C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=c++11 -o CMakeFiles\\Spotigator.dir\\src\\main.cpp.obj -c C:\\Users\\jackb\\OneDrive\\Documents\\GitHub\\Spotigator\\src\\main.cpp",
+  "file": "C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/src/main.cpp",
+  "output": "CMakeFiles/Spotigator.dir/src/main.cpp.obj"
+}
+]
