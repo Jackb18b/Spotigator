@@ -6,3 +6,4 @@
 # Ignore build directories
 build/
 Data/
+.vscode/
