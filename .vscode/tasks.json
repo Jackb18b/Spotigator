@@ -7,10 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "src/main.cpp",
-                "src/Song.cpp",
+                "main.cpp",
+                "Song.cpp",
                 "-o",
-                "${fileDirname}\\Spotigator.exe"
+                "${fileDirname}\\build\\Spotigator.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

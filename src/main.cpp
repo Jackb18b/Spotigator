@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <iostream>
 #include "Song.h"
 
 
@@ -9,6 +10,7 @@
 int main()
 {
     std::vector<Song> songs;
-    fileHandler(songs, 10000);
+    std::cout << "[*] Beginning file reading!" << std::endl;
+    fileHandler(songs, 50000);
     return 0;
 }

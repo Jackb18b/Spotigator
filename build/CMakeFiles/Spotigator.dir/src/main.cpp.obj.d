@@ -89,4 +89,50 @@ CMakeFiles/Spotigator.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.1.0/cerrno \
  C:/msys64/mingw64/include/c++/13.1.0/bits/charconv.h \
  C:/msys64/mingw64/include/c++/13.1.0/bits/basic_string.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/iostream \
+ C:/msys64/mingw64/include/c++/13.1.0/ostream \
+ C:/msys64/mingw64/include/c++/13.1.0/ios \
+ C:/msys64/mingw64/include/c++/13.1.0/exception \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/exception_ptr.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/cxxabi_init_exception.h \
+ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stddef.h \
+ C:/msys64/mingw64/include/stddef.h \
+ C:/msys64/mingw64/include/c++/13.1.0/typeinfo \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/nested_exception.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/ios_base.h \
+ C:/msys64/mingw64/include/c++/13.1.0/ext/atomicity.h \
+ C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/gthr.h \
+ C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
+ C:/msys64/mingw64/include/pthread.h \
+ C:/msys64/mingw64/include/sys/types.h \
+ C:/msys64/mingw64/include/process.h \
+ C:/msys64/mingw64/include/corecrt_startup.h \
+ C:/msys64/mingw64/include/signal.h \
+ C:/msys64/mingw64/include/pthread_signal.h \
+ C:/msys64/mingw64/include/time.h C:/msys64/mingw64/include/sys/timeb.h \
+ C:/msys64/mingw64/include/sec_api/sys/timeb_s.h \
+ C:/msys64/mingw64/include/_timeval.h \
+ C:/msys64/mingw64/include/pthread_time.h \
+ C:/msys64/mingw64/include/pthread_compat.h \
+ C:/msys64/mingw64/include/pthread_unistd.h \
+ C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/locale_classes.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/locale_classes.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/system_error \
+ C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/error_constants.h \
+ C:/msys64/mingw64/include/c++/13.1.0/stdexcept \
+ C:/msys64/mingw64/include/c++/13.1.0/streambuf \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/streambuf.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets.h \
+ C:/msys64/mingw64/include/c++/13.1.0/cwctype \
+ C:/msys64/mingw64/include/wctype.h \
+ C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/streambuf_iterator.h \
+ C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/locale_facets.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/basic_ios.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/ostream.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/istream \
+ C:/msys64/mingw64/include/c++/13.1.0/bits/istream.tcc \
  C:\Users\jackb\OneDrive\Documents\GitHub\Spotigator\src\Song.h

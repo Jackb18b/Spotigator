@@ -182,4 +182,5 @@ CMakeFiles/Spotigator.dir/src/Song.cpp.obj: \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/basic_file.h \
  C:/msys64/mingw64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++io.h \
  C:/msys64/mingw64/include/c++/13.1.0/bits/fstream.tcc \
+ C:/msys64/mingw64/include/c++/13.1.0/iostream \
  C:\Users\jackb\OneDrive\Documents\GitHub\Spotigator\src\Song.h

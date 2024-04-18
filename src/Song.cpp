@@ -2,11 +2,10 @@
 #include <regex>
 #include <fstream>
 #include <istream>
+#include <iostream>
 #include "Song.h"
 
 using namespace std;
-
-//namespace Spotigator{
 
 vector<string> splitStrings(const string &line)
 {
@@ -53,22 +52,30 @@ Song readSong(const string &line)
 void fileHandler(vector<Song> &songs, int numberOfSongs)
 {
     // Set filePath to downloaded csv file (Change later??)
-    string filePath = "C:\\Users\\jackb\\Documents\\UniversityOfFlorida\\Spring2024\\COP3530\\Project3\\universal_top_spotify_songs.csv";
+    string filePath = "..\\Data\\universal_top_spotify_songs.csv";
     fstream csvFile(filePath, std::ios_base::in);
+    if (!csvFile)
+    {
+        cout << "[-] File failed to open!\n";
+        exit(1);
+    }
 
     string line;
     getline(csvFile, line); // header line
-
     int count = 0;
+
     
     while(csvFile.good() && (count < numberOfSongs))
     {
+        if (count % 10000 == 0 && count > 0)
+        {
+            cout << "[*] Read " << count << " songs\n";
+        }
+        
         getline(csvFile, line);
         songs.emplace_back(readSong(line));
         count++;
     }
-    
+    cout << "[+] Read all songs!\n";
 
 }
-
-//}
