@@ -1,3 +1,0 @@
-C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/build/CMakeFiles/Spotigator.dir
-C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/build/CMakeFiles/edit_cache.dir
-C:/Users/jackb/OneDrive/Documents/GitHub/Spotigator/build/CMakeFiles/rebuild_cache.dir
