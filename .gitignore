@@ -1,0 +1,8 @@
+# Ignore compiled files
+*.exe
+*.o
+*.dll
+
+# Ignore build directories
+build/
+Data/
