@@ -4,7 +4,7 @@
 #include <istream>
 #include <iostream>
 #include "Song.h"
-#include "RBtree.h"
+
 
 using namespace std;
 
@@ -69,8 +69,8 @@ void fileHandler(vector<Song> &songs, int numberOfSongs)
     getline(csvFile, line); // header line
     int count = 0;
 
-    //Song baseSong;
     TreeNode dateTree;
+    //Song baseSong;
 
     while(csvFile.good() && (count < numberOfSongs))
     {
