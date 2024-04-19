@@ -2,6 +2,7 @@
 #include <string>
 #include "RBtree.h"
 
+
 using namespace std;
 
 struct Style
@@ -132,7 +133,7 @@ public:
 
     }
 
-    
+    void printSong();
 };
 
 void fileHandler(vector<Song> &songs, int numberOfSongs);
