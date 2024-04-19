@@ -21,7 +21,8 @@ int CountryTable::hashDate(const std::string &date)
     std::string monthDay = "";
     if (date.length() != 10)
     {
-        
+        //std::cout << "Invalid Date & time\t";
+        //std::cout << date << "\n";
         return hashValue;
     }
 
@@ -37,5 +38,24 @@ void CountryTable::insertSong(Song &song)
 {
     int hashedCountry = hashCountry(song.country);
     int hashedDate = hashDate(song.snapshot_date);
+    if (hashedDate == 0 )
+    {
+        //std::cout << song.name << "\n";
+        return;
+    }
     Table[hashedCountry][hashedDate].emplace_back(song);
+}
+
+vector<Song> CountryTable::getSongs(std::string country, std::string date)
+{
+    return Table[hashCountry(country)][hashDate(date)];
+}
+
+void CountryTable::displayTopTen(std::string country, std::string date)
+{
+    vector<Song> topFifty = getSongs(country, date);
+    for (int i = 0; i < 11; i++)
+    {
+        topFifty[i].printSong();
+    }
 }

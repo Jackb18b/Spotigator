@@ -10,8 +10,8 @@ using namespace std;
 
 class CountryTable
 {
-private:
-    const int SizeOfTable1 = 800;
+public:
+    const int SizeOfTable1 = 801;
     const int SizeOfTable2 = 1231;
 
     vector<Song>** Table; 
@@ -40,5 +40,6 @@ public:
     int hashCountry(const std::string &countryCode);
 
     void insertSong(Song &song);
-
+    vector<Song> getSongs(std::string country, std::string date);
+    void displayTopTen(std::string country, std::string date);
 };

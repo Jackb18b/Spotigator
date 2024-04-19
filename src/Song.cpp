@@ -8,6 +8,11 @@
 
 using namespace std;
 
+void Song::printSong()
+{
+    cout << name << " by " << artist << ": " << daily_rank << "\n";
+}
+
 vector<string> splitStrings(const string &line)
 {
     std::regex reg("\\\"(.*?)\\\"");
