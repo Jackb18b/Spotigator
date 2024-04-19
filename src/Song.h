@@ -51,7 +51,7 @@ struct Style
 
 class Song
 {
-private:
+public:
     // Columns from Kaggle dataset
     
     string name;

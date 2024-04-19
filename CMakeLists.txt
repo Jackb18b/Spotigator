@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Add your source files
-file(GLOB SOURCES src/main.cpp src/Song.cpp)
+file(GLOB SOURCES src/main.cpp src/Song.cpp src/CountryTable.cpp)
 
 # Create executable
 add_executable(Spotigator ${SOURCES})
