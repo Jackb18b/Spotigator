@@ -15,10 +15,16 @@ int main()
 
 
     std::cout << "[*] Beginning file reading!" << std::endl;
-    fileHandler(songs, 5000); // reading 50000 songs atm
-    // string date = "2024-03-07";
+    fileHandler(songs, 500); // reading 50000 songs atm
+    // string date = "2024-03-05";
     // std::cout << std::setprecision(10);
     // std::cout << dateToInt(date);
+    // double hold1 = dateToInt(date);
+    // date = "2024-03-04";
+    // std::cout << std::setprecision(10);
+    // std::cout << dateToInt(date);
+    // double hold2 = dateToInt(date);
+    // cout << (hold1 == hold2) << "\n";
     
     return 0;
 }

@@ -8,6 +8,7 @@
 #pragma once
 using namespace std;
 
+double dateToInt(string& date);
 class TreeNode {
      public:
        string DATE;

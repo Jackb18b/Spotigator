@@ -30,7 +30,7 @@ double dateToInt(string& date){
 TreeNode* TreeNode::insertHelper(TreeNode* root, string date, string country) { //O(log(n) because of property of AVL trees)
     //base case
     if (root == nullptr) {
-        //cout << "successful adding date: " << date << endl;
+        cout << "successful adding date: " << date << "\n";
         return new TreeNode(date, country);
     }
 
@@ -40,7 +40,7 @@ TreeNode* TreeNode::insertHelper(TreeNode* root, string date, string country) { 
     else if (dateToInt(date) > dateToInt(root->DATE)) 
         root->right = insertHelper(root->right, date, country);
     else if (dateToInt(date) == dateToInt(root->DATE)){ // if it already exists, print unsuccessful
-        //cout << "already inserted date: " << root->DATE << endl;
+        cout << "already inserted date: " << root->DATE << "\n";
     }
     //setting the initial height of the root
     root->height = max(getHeight(root->left), getHeight(root->right)) + 1;
