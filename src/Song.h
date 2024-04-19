@@ -51,7 +51,7 @@ struct Style
 
 class Song
 {
-private:
+public:
     // Columns from Kaggle dataset
     string spotify_id;
     string name;
@@ -68,7 +68,7 @@ private:
 
     Style song_style;
     
-public:
+
     Song(){};
 
     Song(string spotify_id,
