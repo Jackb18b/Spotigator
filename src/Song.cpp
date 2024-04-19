@@ -4,6 +4,7 @@
 #include <istream>
 #include <iostream>
 #include "Song.h"
+#include "RBtree.h"
 
 using namespace std;
 
@@ -26,6 +27,10 @@ vector<string> splitStrings(const string &line)
 
     return tokens;
 }
+
+// bool sameDates(Song &songA, Song &songB){
+//     return songA.snapshot_date == songB.snapshot_date;
+// }
 
 Song readSong(const string &line)
 {
@@ -64,7 +69,9 @@ void fileHandler(vector<Song> &songs, int numberOfSongs)
     getline(csvFile, line); // header line
     int count = 0;
 
-    
+    //Song baseSong;
+    TreeNode dateTree;
+
     while(csvFile.good() && (count < numberOfSongs))
     {
         if (count % 10000 == 0 && count > 0)
@@ -73,9 +80,22 @@ void fileHandler(vector<Song> &songs, int numberOfSongs)
         }
         
         getline(csvFile, line);
-        songs.emplace_back(readSong(line));
+        Song currSong = readSong(line);
+        
+        // if (count == 0) {
+        //     baseSong = currSong;
+        // }
+        songs.emplace_back(currSong);
+        dateTree.insert(currSong.snapshot_date, currSong.country);
+        // if (sameDates(baseSong, currSong)) {
+        //     sameDateCountry_Song.emplace(currSong.country, currSong.spotify_id);
+        // } else baseSong = currSong;
         count++;
     }
     cout << "[+] Read all songs!\n";
+    cout << "dateTree height: " << dateTree.getHeight(dateTree.root) << endl;
+    cout << "dateTree inorder: " << endl;
+    dateTree.inorderHelper(dateTree.root);
+    cout << dateTree.orderedList << endl;
 
 }

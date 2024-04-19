@@ -53,14 +53,14 @@ class Song
 {
 private:
     // Columns from Kaggle dataset
-    string spotify_id;
+    
     string name;
     string artist;
     int daily_rank;
     int daily_movement;
     int weekly_movement;
-    string country;
-    string snapshot_date;
+    
+    
     int popularity;
     int duration_ms;
     string album_name;
@@ -69,6 +69,9 @@ private:
     Style song_style;
     
 public:
+    string snapshot_date;
+    string country;
+    string spotify_id;
     Song(){};
 
     Song(string spotify_id,
