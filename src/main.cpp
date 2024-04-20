@@ -30,9 +30,9 @@ int main()
     {
         table.insertSong(song);
         Dates.insertDate(song, song.snapshot_date);
-        if (Dates.root->date < 2023) {
-            cout << Dates.root->date << endl;
-        }
+        // if (Dates.root->date < 2023) {
+        //     cout << Dates.root->date << endl;
+        // }
     }
     std::string date = "2024-01-15";
     string country = "JP";
