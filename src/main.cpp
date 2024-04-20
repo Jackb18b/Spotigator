@@ -4,6 +4,7 @@
 //#include <iomanip>
 #include "Song.h"
 #include "CountryTable.h"
+#include "RBtree.h"
 #include <chrono>
 
 
@@ -14,7 +15,7 @@ int main()
     std::vector<Song> songs;
     //std::set<std::pair<std::string, std::string>> sameDateCountry_Song;
     CountryTable table;
-    TreeNode tree;
+    RBtree Dates;
 
     std::cout << "[*] Beginning file reading!" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
