@@ -9,77 +9,96 @@
 #include "Song.h"
 #pragma once
 using namespace std;
-class Song;
+
 
 double dateToInt(string& date);
 
 const bool BLACK = true;
 const bool RED = false;
 
-class RBtree;
-
-class Node {
+class NodeCountry {
   public:
-    double date;
     string country;
-    Node* parent;
+    vector<string> top50Songs;
     bool color;
-    Node* left;
-    Node* right;
-    RBtree* Countries;
+    NodeCountry* parent;
+    NodeCountry* left;
+    NodeCountry* right;
 
-    Node(double date) : 
-    date(date), 
-    parent(nullptr), 
-    color(RED), 
-    left(nullptr), 
-    right(nullptr),
-    Countries(nullptr) 
-    {}
-
-
-    Node(string country) : 
-    country(country), 
-    parent(nullptr), 
-    color(RED), 
-    left(nullptr), 
-    right(nullptr) {}
+    NodeCountry(string country) {
+    this->country = country;
+    parent = nullptr;
+    left = nullptr;
+    right = nullptr;
+    color = RED;
+    }
 
     string print_color();
-    
 };
 
-class RBtree {
+class RBtreeCountry {
   public:
-    Node* nullNode;
-    Node* root;
-    bool isCountryTree = false;
+    NodeCountry* nullNode;
+    NodeCountry* root;
 
-    RBtree() {
-      nullNode = new Node(99999);
+    RBtreeCountry() {
+      nullNode = new NodeCountry("ZZZZZ");
       nullNode->color = BLACK;
       nullNode->left = nullptr;
       nullNode->right = nullptr;
       root = nullNode;
     }
 
-    RBtree(bool isCountryTree) {
-    this->isCountryTree = isCountryTree;
-    nullNode = new Node("ZZZZ");
-    nullNode->color = BLACK;
-    nullNode->left = nullptr;
-    nullNode->right = nullptr;
-    root = nullNode;
+    void songDecomposer(Song Song);
+    void left_rotate(NodeCountry* x);
+    void right_rotate(NodeCountry* x);
+    void insertCountry(Song &song, string country);
+    void insertSongName(Song &song, string songName);
+    void insert_fixup(NodeCountry* z);
+    NodeCountry* search(string country);
+    void level_order(bool print_color = false);
+};
+
+class NodeDate {
+  public:
+    double date;
+    RBtreeCountry Countries;
+    bool color;
+    NodeDate* parent;
+    NodeDate* left;
+    NodeDate* right;
+
+    NodeDate(double date) {
+      this->date = date;
+      parent = nullptr;
+      left = nullptr;
+      right = nullptr;
+      color = RED;
+    }
+
+    string print_color();
+};
+
+class RBtreeDates {
+  public:
+    NodeDate* nullNode;
+    NodeDate* root;
+    bool isCountryTree = false;
+
+    RBtreeDates() {
+      nullNode = new NodeDate(99999);
+      nullNode->color = BLACK;
+      nullNode->left = nullptr;
+      nullNode->right = nullptr;
+      root = nullNode;
     }
 
     void songDecomposer(Song Song);
-    void left_rotate(Node* x);
-    void right_rotate(Node* x);
-    void insertDate(Song &song, double date);
-    void insertCountry(Song &song, string country);
-    void insertSongName(Song &song, string songName);
-    void insert_fixup(Node* z);
-    Node* search(double date);
+    void left_rotate(NodeDate* x);
+    void right_rotate(NodeDate* x);
+    void insertDate(Song &song, string Sdate);
+    void insert_fixup(NodeDate* z);
+    NodeDate* search(string Sdate);
     void level_order(bool print_color = false);
 };
 
