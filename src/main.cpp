@@ -31,16 +31,26 @@ int main()
         table.insertSong(song);
         Dates.insertDate(song, song.snapshot_date);
         if (Dates.root->date < 2023) {
-            cout << "hi" << endl;
+            cout << Dates.root->date << endl;
         }
     }
     std::string date = "2024-01-15";
+    string country = "JP";
+    cout << "\t\tHash Table Top 10:\n";
     start = std::chrono::high_resolution_clock::now();
-    table.displayTopTen("JP", date);
+    table.displayTopTen(country, date);
     stop = std::chrono::high_resolution_clock::now();
-    auto durationms = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "\n" << duration.count() << " microseconds to find and print top 10\n";
-    
+    auto duration_hash = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "\n" << duration_hash.count() << " microseconds to find and print top 10 from Hashtable\n\n";
+
+    cout << "\t\tRed-Black Tree Top 10:\n";
+    start = std::chrono::high_resolution_clock::now();
+    Dates.displayTopTen(date, country);
+    stop = std::chrono::high_resolution_clock::now();
+    auto duration_rbtree = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "\n" << duration_rbtree.count() << " microseconds to find and print top 10 from RBtree\n\n";
+
+    //Dates.level_order();
     
     return 0;
 }
