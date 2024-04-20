@@ -2,11 +2,6 @@
 
 using namespace std;
 
-string Node::print_color(){
-    if (color == BLACK) return "(b)";
-      return "(r)";
-}
-
 double dateToInt(string& date){
     istringstream iss(date);
     char dash;
@@ -16,13 +11,42 @@ double dateToInt(string& date){
     return intDate;
 }
 
+string NodeCountry::print_color(){
+    if (color == BLACK) return "(b)";
+      return "(r)";
+}
+string NodeDate::print_color(){
+    if (color == BLACK) return "(b)";
+      return "(r)";
+}
+
 void songDecomposer(Song song){
     double date = dateToInt(song.snapshot_date);
     string country = song.country;
 }
 
-void RBtree::left_rotate(Node* x) {
-      Node* y = x->right;
+void RBtreeCountry::left_rotate(NodeCountry* x) {
+      NodeCountry* y = x->right;
+      x->right = y->left;
+
+      if (y->left != nullNode) {
+        y->left->parent = x; 
+      }
+      
+      y->parent = x->parent;
+
+      if (x->parent == nullptr) {
+        root = y;
+      } else if (x == x->parent->left){
+        x->parent->left = y;
+      } else 
+        x->parent->right = y;
+
+      y->left = x;
+      x->parent = y;
+    }
+void RBtreeDates::left_rotate(NodeDate* x) {
+      NodeDate* y = x->right;
       x->right = y->left;
 
       if (y->left != nullNode) {
@@ -42,8 +66,28 @@ void RBtree::left_rotate(Node* x) {
       x->parent = y;
     }
 
-void RBtree::right_rotate(Node* x) {
-      Node* y = x->left;
+void RBtreeCountry::right_rotate(NodeCountry* x) {
+      NodeCountry* y = x->left;
+      x->left = y->right;
+
+      if (y->right != nullNode){
+        y->right->parent = x;
+      }
+
+      y->parent = x->parent;
+
+      if (x->parent == nullptr){
+        root = y;
+      } else if (x == x->parent->right) {
+        x->parent->right = y;
+      } else 
+        x->parent->left = y;
+
+      y->right = x;
+      x->parent = y;
+    }
+void RBtreeDates::right_rotate(NodeDate* x) {
+      NodeDate* y = x->left;
       x->left = y->right;
 
       if (y->right != nullNode){
@@ -63,19 +107,20 @@ void RBtree::right_rotate(Node* x) {
       x->parent = y;
     }
 
-void RBtree::insertDate(Song &song, double date) {
-      Node* z = new Node(date);
+void RBtreeDates::insertDate(Song &song, string Sdate) {
+      double date = dateToInt(Sdate);
+      NodeDate* z = new NodeDate(date);
       z->left = nullNode;
       z->right = nullNode;
 
-      Node* y = nullptr;
-      Node* x = root;
+      NodeDate* y = nullptr;
+      NodeDate* x = root;
       //RBtree Countries(true);
 
       while (x != nullNode) {
         if (z->date == x->date) {
-            //z->Countries.insertCountry(song, song.country);
-            break;
+            x->Countries.insertCountry(song, song.country);
+            return;
         }
         y = x;
         if (z->date < x->date) {
@@ -92,24 +137,25 @@ void RBtree::insertDate(Song &song, double date) {
       } else 
         y->right = z;
 
+      z->Countries.insertCountry(song, song.country);
       insert_fixup(z);
     }
 
-void RBtree::insertCountry(Song &song, string country) {
-      Node* z = new Node(country);
+void RBtreeCountry::insertCountry(Song &song, string country) {
+      NodeCountry* z = new NodeCountry(country);
       z->left = nullNode;
       z->right = nullNode;
 
-      Node* y = nullptr;
-      Node* x = root;
+      NodeCountry* y = nullptr;
+      NodeCountry* x = root;
 
       while (x != nullNode) {
         if (z->country == x->country) {
-            vector<string> top50Songs;
-            top50Songs.push_back(song.name);
+            x->top50Songs.push_back(song.name);
+            return;
         }
         y = x;
-        if (z->date < x->date) {
+        if (z->country < x->country) {
           x = x->left;
         } else
           x = x->right;
@@ -122,14 +168,15 @@ void RBtree::insertCountry(Song &song, string country) {
         y->left = z;
       } else 
         y->right = z;
-
+      
+      z->top50Songs.push_back(song.name);
       insert_fixup(z);
     }
 
-void RBtree::insert_fixup(Node* z) {
+void RBtreeCountry::insert_fixup(NodeCountry* z) {
       while (z->parent && z->parent->color == RED) {
         if (z->parent == z->parent->parent->left) {
-          Node* y = z->parent->parent->right;
+          NodeCountry* y = z->parent->parent->right;
           if (y->color == RED) {
             z->parent->color = BLACK;
             y->color = BLACK;
@@ -145,7 +192,46 @@ void RBtree::insert_fixup(Node* z) {
             right_rotate(z->parent->parent);
           }
         } else {
-          Node* y = z->parent->parent->left;
+          NodeCountry* y = z->parent->parent->left;
+          if (y->color == RED) {
+            z->parent->color = BLACK;
+            y->color = BLACK;
+            z->parent->parent->color = RED;
+            z = z->parent->parent;
+          } else {
+            if (z == z->parent->left) {
+              z = z->parent;
+              right_rotate(z);
+            }
+            z->parent->color = BLACK;
+            z->parent->parent->color = RED;
+            left_rotate(z->parent->parent);
+          }
+        }
+        if (z == root) break;
+      }
+      root->color = BLACK;
+    }
+void RBtreeDates::insert_fixup(NodeDate* z) {
+      while (z->parent && z->parent->color == RED) {
+        if (z->parent == z->parent->parent->left) {
+          NodeDate* y = z->parent->parent->right;
+          if (y->color == RED) {
+            z->parent->color = BLACK;
+            y->color = BLACK;
+            z->parent->parent->color = RED;
+            z = z->parent->parent; //checking iteratively
+          } else {
+            if (z == z->parent->right) {
+              z = z->parent;
+              left_rotate(z);
+            }
+            z->parent->color = BLACK;
+            z->parent->parent->color = RED;
+            right_rotate(z->parent->parent);
+          }
+        } else {
+          NodeDate* y = z->parent->parent->left;
           if (y->color == RED) {
             z->parent->color = BLACK;
             y->color = BLACK;
@@ -166,8 +252,17 @@ void RBtree::insert_fixup(Node* z) {
       root->color = BLACK;
     }
 
-Node* RBtree::search(double date) {
-      Node* x = root;
+NodeCountry* RBtreeCountry::search(string country) {
+      NodeCountry* x = root;
+      while (x != nullNode && country != x->country) {
+        if (country < x->country) x = x->left;
+        else x = x->right;
+      }
+      return x;
+    }
+NodeDate* RBtreeDates::search(string Sdate) {
+      double date = dateToInt(Sdate);
+      NodeDate* x = root;
       while (x != nullNode && date != x->date) {
         if (date < x->date) x = x->left;
         else x = x->right;
@@ -175,12 +270,30 @@ Node* RBtree::search(double date) {
       return x;
     }
 
-void RBtree::level_order(bool print_color) {
-      deque<Node*> q;
+void RBtreeCountry::level_order(bool print_color) {
+      deque<NodeCountry*> q;
       q.push_back(root);
       
       while (!q.empty()) {
-        Node* node = q.front();
+        NodeCountry* node = q.front();
+        q.pop_front();
+
+        if (print_color) {
+          cout << node->country << node->print_color() << " ";
+        } else {
+          cout << node->country << " ";
+        }
+
+        if (node->left != nullNode) q.push_back(node->left);
+        if (node->right != nullNode) q.push_back(node->right);
+      }
+    }
+void RBtreeDates::level_order(bool print_color) {
+      deque<NodeDate*> q;
+      q.push_back(root);
+      
+      while (!q.empty()) {
+        NodeDate* node = q.front();
         q.pop_front();
 
         if (print_color) {

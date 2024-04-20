@@ -15,7 +15,7 @@ int main()
     std::vector<Song> songs;
     //std::set<std::pair<std::string, std::string>> sameDateCountry_Song;
     CountryTable table;
-    RBtree Dates;
+    RBtreeDates Dates;
 
     std::cout << "[*] Beginning file reading!" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
@@ -29,7 +29,7 @@ int main()
     for (auto &song : songs)
     {
         table.insertSong(song);
-
+        Dates.insertDate(song, song.snapshot_date);
     }
     std::string date = "2024-01-15";
     start = std::chrono::high_resolution_clock::now();
