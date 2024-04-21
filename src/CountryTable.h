@@ -42,5 +42,5 @@ public:
     void insertSong(Song &song);
     vector<Song> getSongs(std::string country, std::string date);
 
-    void displayTopTen(std::string country, std::string date);
+    std::string displayTopTen(std::string country, std::string date);
 };

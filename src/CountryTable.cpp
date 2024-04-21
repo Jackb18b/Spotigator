@@ -51,11 +51,13 @@ vector<Song> CountryTable::getSongs(std::string country, std::string date)
     return Table[hashCountry(country)][hashDate(date)];
 }
 
-void CountryTable::displayTopTen(std::string country, std::string date)
+std::string CountryTable::displayTopTen(std::string country, std::string date)
 {
+    std::string returnSongs = "";
     vector<Song> topFifty = getSongs(country, date);
     for (int i = 0; i < 10; i++)
     {
-        topFifty[i].printSong();
+        returnSongs += topFifty[i].printSong();
     }
+    return returnSongs;
 }

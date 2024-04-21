@@ -132,7 +132,7 @@ public:
 
     }
 
-    void printSong();
+    std::string printSong();
 };
 
 void fileHandler(vector<Song> &songs, int numberOfSongs);
