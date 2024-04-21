@@ -47,7 +47,7 @@ class RBtreeCountry {
     void right_rotate(NodeCountry* x);
     void insertCountry(Song &song, string &country);
     void insert_fixup(NodeCountry* z);
-    void searchCountry(string &country);
+    std::string searchCountry(string &country);
     void level_order(bool print_color = false);
 };
 
@@ -90,6 +90,6 @@ class RBtreeDates {
     void right_rotate(NodeDate* x);
     void insertDate(Song &song, string &Sdate);
     void insert_fixup(NodeDate* z);
-    void displayTopTen(string &Sdate, string &country);
+    std::string displayTopTen(string &Sdate, string &country);
     void level_order(bool print_color = false);
 };

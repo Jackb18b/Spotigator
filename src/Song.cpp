@@ -10,9 +10,20 @@ using namespace std;
 
 std::string Song::printSong()
 {
-    std::string song = std::to_string(daily_rank) + ". " + name + " by " + artist;
-    cout << name << " by " << artist << ": " << daily_rank << "\n";
+    int commaIndex = artist.find(',');
+    std::string shortArtist;
+    // shortArtist is for display purposes
+    if (commaIndex != std::string::npos && commaIndex + 1 < artist.size()) {
+        shortArtist = artist.substr(0,commaIndex);
+    } else {
+        shortArtist = artist;
+    }
+    std::string song = std::to_string(daily_rank) + ". " + name + " by " + shortArtist + "\n";
+    std::cout << name << " by " << artist << ": " << daily_rank << "\n";
+
+    return song;
 }
+
 
 vector<string> splitStrings(const string &line)
 {
