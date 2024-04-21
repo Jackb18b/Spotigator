@@ -72,7 +72,7 @@ void fileHandler(vector<Song> &songs, int numberOfSongs)
 
     while(csvFile.good() && (count < numberOfSongs))
     {
-        if (count % 10000 == 0 && count > 0)
+        if (count % 50000 == 0 && count > 0)
         {
             cout << "[*] Read " << count << " songs\n";
         }

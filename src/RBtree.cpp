@@ -269,7 +269,7 @@ void RBtreeCountry::searchCountry(string &country) {
         if (country < x->country) x = x->left;
         else x = x->right;
       }
-      for (int i = 0; i < 11; i++) {
+      for (int i = 0; i < 10; i++) {
         x->top50Songs[i].printSong();
       }
     }

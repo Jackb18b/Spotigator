@@ -54,7 +54,7 @@ vector<Song> CountryTable::getSongs(std::string country, std::string date)
 void CountryTable::displayTopTen(std::string country, std::string date)
 {
     vector<Song> topFifty = getSongs(country, date);
-    for (int i = 0; i < 11; i++)
+    for (int i = 0; i < 10; i++)
     {
         topFifty[i].printSong();
     }
