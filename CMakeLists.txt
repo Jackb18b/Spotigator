@@ -35,6 +35,15 @@ add_executable(Tests
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain)
 
 
+if(WIN32)
+    add_custom_command(
+        TARGET Spotigator
+        COMMENT "Copy OpenAL DLL"
+        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:Spotigator>
+        VERBATIM)
+endif()
+
+
 
 
 include(CTest)

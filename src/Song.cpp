@@ -12,6 +12,7 @@ std::string Song::printSong()
 {
     std::string song = std::to_string(daily_rank) + ". " + name + " by " + artist;
     cout << name << " by " << artist << ": " << daily_rank << "\n";
+    return song;
 }
 
 vector<string> splitStrings(const string &line)
