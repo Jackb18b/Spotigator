@@ -72,7 +72,7 @@ void SFMLHelper::displayStartWindow() {
     const int width = 800, height = 500;
     sf::RenderWindow startWindow(sf::VideoMode(width, height), "Spotigator");
     sf::Font font;
-    if (!font.loadFromFile("../SFMLFiles/font.ttf")) {
+    if (!font.loadFromFile("../../SFMLFiles/font.ttf")) {
         std::cout << "Error loading font" << "\n";
         exit(0);
     }
@@ -89,7 +89,7 @@ void SFMLHelper::displayStartWindow() {
 
     // Displays spotify.png on screen
     sf::Texture spotTexture;
-    if (!spotTexture.loadFromFile("../SFMLFiles/spotify.png")) {
+    if (!spotTexture.loadFromFile("../../SFMLFiles/spotify.png")) {
         std::cout << "error loading spotify" << "\n";
         exit(0);
     }
@@ -139,7 +139,7 @@ std::vector<std::string> SFMLHelper::displayInputWindow() {
 
     // Load a font for the input lines
     sf::Font font;
-    if (!font.loadFromFile("../SFMLFiles/font.ttf")) {
+    if (!font.loadFromFile("../../SFMLFiles/font.ttf")) {
         // Handle error loading the font
         std::cout << "couldnt load font\n";
         exit(0);
@@ -167,7 +167,7 @@ std::vector<std::string> SFMLHelper::displayInputWindow() {
 
     //Display globe on right
     sf::Texture globeTexture;
-    if (!globeTexture.loadFromFile("../SFMLFiles/world.png")) {
+    if (!globeTexture.loadFromFile("../../SFMLFiles/world.png")) {
         std::cout << "error loading world" << "\n";
         exit(0);
     }
@@ -330,7 +330,7 @@ void SFMLHelper::displayHelpWindow() {
     const int width = 700, height = 500;
     sf::RenderWindow helpWindow(sf::VideoMode(width, height), "Help");
     sf::Font font;
-    if (!font.loadFromFile("../SFMLFiles/font.ttf")) {
+    if (!font.loadFromFile("../../SFMLFiles/font.ttf")) {
         std::cout << "Error loading font" << "\n";
         exit(0);
     }
@@ -393,7 +393,7 @@ void SFMLHelper::displayResultsWindow(std::string hashString, std::string RBStri
     const int width = 1000, height = 600;
     sf::RenderWindow resultWindow(sf::VideoMode(width, height), "Results");
     sf::Font font;
-    if (!font.loadFromFile("../SFMLFiles/font.ttf")) {
+    if (!font.loadFromFile("../../SFMLFiles/font.ttf")) {
         std::cout << "Error loading font" << "\n";
         exit(0);
     }
@@ -430,6 +430,9 @@ void SFMLHelper::displayResultsWindow(std::string hashString, std::string RBStri
         resultWindow.display();
         while (resultWindow.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
+                resultWindow.close();
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
                 resultWindow.close();
             }
         }
