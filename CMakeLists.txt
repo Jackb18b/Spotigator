@@ -14,7 +14,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Catch2)
 
-include(FetchContent)
+Include(FetchContent)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 2.6.x)
@@ -25,7 +25,7 @@ file(GLOB SOURCES src/*.cpp)
 
 # Create executable
 add_executable(Spotigator ${SOURCES})
-target_link_libraries(Spotigator PRIVATE sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
+target_link_libraries(Spotigator sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
 target_compile_features(Spotigator PRIVATE cxx_std_17)
 
 add_executable(Tests

@@ -13,6 +13,6 @@ using namespace std;
 // This uses C++ "raw strings" and assumes your PageRank outputs a string with
 //   the same thing you print.
 TEST_CASE("Example Test", "[Test]"){
-    
+
     REQUIRE(0 == 0);
 }
