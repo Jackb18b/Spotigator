@@ -6,4 +6,6 @@
 # Ignore build directories
 build/
 Data/
+CMakeFiles/
+_deps/
 .vscode/

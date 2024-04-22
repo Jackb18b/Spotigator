@@ -57,9 +57,9 @@ int main()
     {
         //table.insertSong(song);
         Dates.insertDate(song, song.snapshot_date);
-        // if (Dates.root->date < 2023) {
-        //     cout << Dates.root->date << endl;
-        // }
+        if (Dates.root->date < 2023) {
+            cout << Dates.root->date << endl;
+        }
     }
     stop = std::chrono::high_resolution_clock::now();
     auto duration_load_table = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
