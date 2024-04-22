@@ -5,6 +5,7 @@
 #include "Song.h"
 #include "CountryTable.h"
 #include "RBtree.h"
+#include "SFMLHelper.h"
 #include <chrono>
 
 
@@ -17,6 +18,7 @@ int main()
     CountryTable table;
     RBtreeDates Dates;
     int numberOfSongs = 200000;
+     // Returns paramVect[country, date]
 
     std::cout << "[*] Beginning file reading!" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
@@ -47,8 +49,8 @@ int main()
         // }
     }
     stop = std::chrono::high_resolution_clock::now();
-    auto duration_load_hash = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << duration_load_hash.count() << " microseconds to load Hashtable\n";
+    auto duration_load_hash = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << duration_load_hash.count() << " milliseconds to load Hashtable\n";
 
     start = std::chrono::high_resolution_clock::now();
     for (auto &song : songs)
@@ -60,27 +62,29 @@ int main()
         }
     }
     stop = std::chrono::high_resolution_clock::now();
-    auto duration_load_table = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "\n" << duration_load_table.count() << " microseconds to load RBTree\n\n";
+    auto duration_load_table = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << "\n" << duration_load_table.count() << " milliseconds to load RBTree\n\n";
 
-
-    std::string date = "2024-01-15";
-    string country = "SA";
+    SFMLHelper::displayStartWindow();
+    std::vector<std::string> paramVect = SFMLHelper::displayInputWindow();
+    std::string date = paramVect[1];
+    string country = paramVect[0];
     cout << "\t\tHash Table Top 10:\n";
     start = std::chrono::high_resolution_clock::now();
-    table.displayTopTen(country, date);
+    std::string hashString = "Hash Table\n" + table.displayTopTen(country, date);
     stop = std::chrono::high_resolution_clock::now();
     auto duration_hash = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     std::cout << "\n" << duration_hash.count() << " microseconds to find and print top 10 from Hashtable\n\n";
-
+    hashString += "\nTime to find in microseconds: " + to_string(duration_hash.count());
     cout << "\t\tRed-Black Tree Top 10:\n";
     start = std::chrono::high_resolution_clock::now();
-    Dates.displayTopTen(date, country);
+    std::string RBString = "Red Black Tree\n" + Dates.displayTopTen(date, country);
     stop = std::chrono::high_resolution_clock::now();
     auto duration_rbtree = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     std::cout << "\n" << duration_rbtree.count() << " microseconds to find and print top 10 from RBtree\n\n";
-
+    RBString += "\nTime to find in microseconds: " + to_string(duration_rbtree.count());
     //Dates.level_order();
-    
+    cout << RBString << endl << hashString;
+    SFMLHelper::displayResultsWindow(hashString, RBString);
     return 0;
 }

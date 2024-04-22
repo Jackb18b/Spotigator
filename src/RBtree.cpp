@@ -263,24 +263,29 @@ void RBtreeDates::insert_fixup(NodeDate* z) {
       root->color = BLACK;
     }
 
-void RBtreeCountry::searchCountry(string &country) {
+std::string RBtreeCountry::searchCountry(string &country) {
+    std::string returnString = "";
       NodeCountry* x = root;
       while (x != nullNode && country != x->country) {
         if (country < x->country) x = x->left;
         else x = x->right;
       }
       for (int i = 0; i < 10; i++) {
-        x->top50Songs[i].printSong();
+        returnString += x->top50Songs[i].printSong();
+
       }
+      return returnString;
     }
-void RBtreeDates::displayTopTen(string &Sdate, string &country) {
+std::string RBtreeDates::displayTopTen(string &Sdate, string &country) {
+      std::string returnString;
       int date = dateToInt(Sdate);
       NodeDate* x = root;
       while (x != nullNode && date != x->date) {
         if (date < x->date) x = x->left;
         else x = x->right;
       }
-      x->Countries.searchCountry(country);
+      returnString = x->Countries.searchCountry(country);
+      return returnString;
     }
 
 void RBtreeCountry::level_order(bool print_color) {
