@@ -67,8 +67,11 @@ int main()
 
     SFMLHelper::displayStartWindow();
     std::vector<std::string> paramVect = SFMLHelper::displayInputWindow();
+
     std::string date = paramVect[1];
     string country = paramVect[0];
+
+
     cout << "\t\tHash Table Top 10:\n";
     start = std::chrono::high_resolution_clock::now();
     std::string hashString = "Hash Table\n" + table.displayTopTen(country, date);
@@ -76,6 +79,8 @@ int main()
     auto duration_hash = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     std::cout << "\n" << duration_hash.count() << " microseconds to find and print top 10 from Hashtable\n\n";
     hashString += "\nTime to find in microseconds: " + to_string(duration_hash.count());
+
+    
     cout << "\t\tRed-Black Tree Top 10:\n";
     start = std::chrono::high_resolution_clock::now();
     std::string RBString = "Red Black Tree\n" + Dates.displayTopTen(date, country);
