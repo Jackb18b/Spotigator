@@ -17,9 +17,8 @@ int main()
     //std::set<std::pair<std::string, std::string>> sameDateCountry_Song;
     CountryTable table;
     RBtreeDates Dates;
-    int numberOfSongs = 10000;
-    SFMLHelper::displayStartWindow();
-    std::vector<std::string> paramVect = SFMLHelper::displayInputWindow(); // Returns paramVect[country, date]
+    int numberOfSongs = 200000;
+     // Returns paramVect[country, date]
 
     std::cout << "[*] Beginning file reading!" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
@@ -66,7 +65,8 @@ int main()
     auto duration_load_table = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     std::cout << "\n" << duration_load_table.count() << " microseconds to load RBTree\n\n";
 
-
+    SFMLHelper::displayStartWindow();
+    std::vector<std::string> paramVect = SFMLHelper::displayInputWindow();
     std::string date = paramVect[1];
     string country = paramVect[0];
     cout << "\t\tHash Table Top 10:\n";
