@@ -79,7 +79,7 @@ void SFMLHelper::displayStartWindow() {
     /////// Welcome screen /////////
     // Displays created by: on screen
     sf::Text authorText;
-    SFMLHelper::createSFMLText(authorText, "Created by: Johnathon Brown, Cameron Moore, and Santiago Roa", font, 18);
+    SFMLHelper::createSFMLText(authorText, "Created by: Jonathon Brown, Cameron Moore, and Santiago Roa", font, 18);
     authorText.setPosition(sf::Vector2f(width / 2.0f, height - 480));
 
     // Displays Songfinder on screen
