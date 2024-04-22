@@ -163,7 +163,7 @@ std::vector<std::string> SFMLHelper::displayInputWindow() {
     sf::Text datePrompt;
     createSFMLText(datePrompt, "Date: ", font, 18);
     datePrompt.setStyle(sf::Text::Bold);
-    datePrompt.setPosition(sf::Vector2f(width / 2.0f - 310, height / 2.0f + 72));
+    datePrompt.setPosition(sf::Vector2f(width / 2.0f - 310, height / 2.0f + 55));
 
     //Display globe on right
     sf::Texture globeTexture;
@@ -202,7 +202,7 @@ std::vector<std::string> SFMLHelper::displayInputWindow() {
     dateCursor.setOrigin(sf::Vector2f(1, 9));
     inputDateText.setPosition(sf::Vector2f(width / 2.0f - 230, height / 2.0f + 60));
     dateCursor.setPosition(inputDateText.getGlobalBounds().left + inputDateText.getGlobalBounds().width,
-                       inputDateText.getGlobalBounds().top + 13);
+                           inputDateText.getGlobalBounds().top + 13);
 
     // Help button
     sf::Color background(26, 0, 69);
@@ -297,26 +297,26 @@ std::vector<std::string> SFMLHelper::displayInputWindow() {
                 }
                 break;
             }  else if (event.type == sf::Event::TextEntered) {
-                    if (!onDate && userCountryInput.size() < 2 && isalpha(event.text.unicode)) {
-                        userCountryInput += toupper(event.text.unicode);
-                        inputCountryText.setString(userCountryInput);
-                        inputCountryTextBounds = inputCountryText.getGlobalBounds();
-                        inputCountryText.setOrigin(sf::Vector2f(inputCountryTextBounds.width / 2.0f,
-                                                                inputCountryTextBounds.height / 2.0f));
-                        countryCursor.setPosition(
-                                inputCountryText.getGlobalBounds().left + inputCountryText.getGlobalBounds().width,
-                                inputCountryText.getGlobalBounds().top + 4);
-                    }
-                    else if (userDateInput.size() < 11 && countryCode.size() == 2 && !sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Backspace)) {
-                        userDateInput += toupper(event.text.unicode);
-                        inputDateText.setString(userDateInput);
-                        inputDateTextBounds = inputDateText.getGlobalBounds();
-                        inputDateText.setOrigin(sf::Vector2f(inputDateTextBounds.width / 2.0f - 20,
-                                                                inputDateTextBounds.height / 2.0f));
-                        dateCursor.setPosition(
-                                inputDateText.getGlobalBounds().left + inputDateText.getGlobalBounds().width,
-                                inputDateText.getGlobalBounds().top + 11);
-                    }
+                if (!onDate && userCountryInput.size() < 2 && isalpha(event.text.unicode)) {
+                    userCountryInput += toupper(event.text.unicode);
+                    inputCountryText.setString(userCountryInput);
+                    inputCountryTextBounds = inputCountryText.getGlobalBounds();
+                    inputCountryText.setOrigin(sf::Vector2f(inputCountryTextBounds.width / 2.0f,
+                                                            inputCountryTextBounds.height / 2.0f));
+                    countryCursor.setPosition(
+                            inputCountryText.getGlobalBounds().left + inputCountryText.getGlobalBounds().width,
+                            inputCountryText.getGlobalBounds().top + 4);
+                }
+                else if (userDateInput.size() < 11 && countryCode.size() == 2 && !sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Backspace)) {
+                    userDateInput += toupper(event.text.unicode);
+                    inputDateText.setString(userDateInput);
+                    inputDateTextBounds = inputDateText.getGlobalBounds();
+                    inputDateText.setOrigin(sf::Vector2f(inputDateTextBounds.width / 2.0f - 20,
+                                                         inputDateTextBounds.height / 2.0f));
+                    dateCursor.setPosition(
+                            inputDateText.getGlobalBounds().left + inputDateText.getGlobalBounds().width,
+                            inputDateText.getGlobalBounds().top + 11);
+                }
             }
             if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Backspace)) {
                 backspacePressed = false;
@@ -414,12 +414,14 @@ void SFMLHelper::displayResultsWindow(std::string hashString, std::string RBStri
     SFMLHelper::createSFMLText(RBText, RBString, font, 15);
     RBText.setPosition(width / 2.0f, height - 180);
 
-
-
-
-    // Background color hex
+    // Go again button
     sf::Color background(26, 0, 69);
-
+    sf::Text againButtonText;
+    SFMLHelper::createSFMLText(againButtonText, "Go again!", font, 18);
+    againButtonText.setFillColor(background);
+    sf::RectangleShape againButton(sf::Vector2f(130, 40));
+    SFMLHelper::createSFMLButton(againButton, againButtonText, width - 100, height - 500);
+    againButtonText.setPosition(width - 100, height - 500);
 
     while (resultWindow.isOpen()) {
         sf::Event event;
@@ -427,13 +429,22 @@ void SFMLHelper::displayResultsWindow(std::string hashString, std::string RBStri
         resultWindow.draw(resultText);
         resultWindow.draw(hashText);
         resultWindow.draw(RBText);
+        resultWindow.draw(againButton);
+        resultWindow.draw(againButtonText);
         resultWindow.display();
         while (resultWindow.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 resultWindow.close();
+                exit(0);
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
                 resultWindow.close();
+            }
+            if (event.type == event.MouseButtonPressed) {
+                if (againButton.getGlobalBounds().contains(
+                        resultWindow.mapPixelToCoords(sf::Mouse::getPosition(resultWindow)))) {
+                    resultWindow.close();
+                }
             }
         }
     }

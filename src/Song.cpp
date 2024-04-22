@@ -51,23 +51,23 @@ vector<string> splitStrings(const string &line)
 
 Song readSong(const string &line)
 {
-    vector<string> cols = splitStrings(line);   
+    vector<string> cols = splitStrings(line);
 
     try{
         Song song(cols[0],cols[1],cols[2],stoi(cols[3]),stoi(cols[4]),
-            stoi(cols[5]),cols[6],cols[7],stoi(cols[8]),cols[9], //9 is bool
-            stoi(cols[10]),cols[11],cols[12],stof(cols[13]),stof(cols[14]),
-            stoi(cols[15]),stof(cols[16]),stoi(cols[17]),stof(cols[18]),stof(cols[19]),
-            stof(cols[20]),stof(cols[21]),stof(cols[22]),stof(cols[23]),stoi(cols[24]));
+                  stoi(cols[5]),cols[6],cols[7],stoi(cols[8]),cols[9], //9 is bool
+                  stoi(cols[10]),cols[11],cols[12],stof(cols[13]),stof(cols[14]),
+                  stoi(cols[15]),stof(cols[16]),stoi(cols[17]),stof(cols[18]),stof(cols[19]),
+                  stof(cols[20]),stof(cols[21]),stof(cols[22]),stof(cols[23]),stoi(cols[24]));
 
-            return song;
+        return song;
     }
     catch(exception& exept){
         Song song;
         return song;
     }
 
-    
+
 }
 
 
@@ -95,7 +95,7 @@ void fileHandler(vector<Song> &songs, int numberOfSongs)
         {
             cout << "[*] Read " << count << " songs\n";
         }
-        
+
         getline(csvFile, line);
         Song currSong = readSong(line);
         

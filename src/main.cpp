@@ -18,7 +18,7 @@ int main()
     CountryTable table;
     RBtreeDates Dates;
     int numberOfSongs = 200000;
-     // Returns paramVect[country, date]
+    // Returns paramVect[country, date]
 
     std::cout << "[*] Beginning file reading!" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
@@ -26,11 +26,11 @@ int main()
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
     std::cout << "\n" << duration.count() << " seconds to read " << numberOfSongs << " songs\n";
-    
-    
+
+
     std::cout << "Earliest date included: " << songs.back().snapshot_date << "\n\n";
     start = std::chrono::high_resolution_clock::now();
-    for (auto &song : songs)  
+    for (auto &song : songs)
     {
 
         try
@@ -41,8 +41,8 @@ int main()
         {
             std::cerr << e.what() << '\n';
         }
-        
-        
+
+
         //Dates.insertDate(song, song.snapshot_date);
         // if (Dates.root->date < 2023) {
         //     cout << Dates.root->date << endl;
