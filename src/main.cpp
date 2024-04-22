@@ -47,8 +47,8 @@ int main()
         // }
     }
     stop = std::chrono::high_resolution_clock::now();
-    auto duration_load_hash = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << duration_load_hash.count() << " microseconds to load Hashtable\n";
+    auto duration_load_hash = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << duration_load_hash.count() << " milliseconds to load Hashtable\n";
 
     start = std::chrono::high_resolution_clock::now();
     for (auto &song : songs)
@@ -60,8 +60,8 @@ int main()
         // }
     }
     stop = std::chrono::high_resolution_clock::now();
-    auto duration_load_table = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "\n" << duration_load_table.count() << " microseconds to load RBTree\n\n";
+    auto duration_load_table = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << "\n" << duration_load_table.count() << " milliseconds to load RBTree\n\n";
 
 
     std::string date = "2024-01-15";
